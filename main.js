@@ -1,5 +1,5 @@
 const mc = require("minecraft-protocol")
-const server = require("./server.js")
+const term = require("./server.js")
 const data = require("./data.json")
 
 var client = mc.createClient({
@@ -32,5 +32,5 @@ client.on('chat', function(packet) {
     
   var msg = jsonMsg.text && jsonMsg.extra.join("");
   module.exports.chat[module.exports.chat.length] = msg;
-  server.newChat(msg);
+  term.newChat(msg);
 });
