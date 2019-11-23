@@ -14,7 +14,7 @@ client.on("connect", () => {
   console.log("Connected")
 })
 
-client.on("error" => (err) => {
+client.on("error", (err) => {
   console.log(err)
 })
 
