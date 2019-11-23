@@ -10,6 +10,14 @@ var client = mc.createClient({
 });
 console.log("Starting")
 
+client.on("connect", () => {
+  console.log("Connected")
+})
+
+client.on("error" => (err) => {
+  console.log(err)
+})
+
 module.exports = {
   chat: [
      
