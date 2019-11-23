@@ -7,7 +7,7 @@ yes Y | pkg install npm>>ilog.txt 2>&1
 yes Y | pkg install nodejs>>ilog.txt 2>&1
 echo -e "\e[48;5;10m\e[38;5;0m[i]\e[0m Installing/Updating libraries"
 npm install n>>ilog.txt 2>&1
-npm install minecraft-protocol
+npm install minecraft-protocol>>ilog.txt 2>&1
 echo -e "\e[48;5;10m\e[38;5;0m[i]\e[0m Searching for updates"
 git config user.email "y@x.z"
 git config user.name "XYZ"
