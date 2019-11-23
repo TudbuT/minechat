@@ -25,12 +25,13 @@ const sendChat = function (msg) {
 }
 
 client.on('chat', function(packet) {
-  console.log(packet.message)
   var jsonMsg = JSON.parse(packet.message);
   var msg = jsonMsg.text
   jsonMsg.extra.forEach(j => {
     if(j.text)
       msg = msg + j.text
+    else if(typeof(j) == "STRING")
+      msg = msg + j
   })
   chat[chat.length] = msg;
   newChat(msg);
