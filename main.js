@@ -23,6 +23,7 @@ var chat = []
 const sendChat = function (msg) {
   client.write('chat', {message: msg});
   console.log("> " + msg)
+  chat[chat.length] = "> " + msg
 }
 
 client.on('chat', function(packet) {
@@ -56,7 +57,7 @@ process.stdin.on("data", d => {
     message = ""
   }
   if(message == "#last\n") {
-    console.log("---\n" + chat);
+    console.log("---\n" + chat.join(", "));
     message = ""
   }
 })
