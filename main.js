@@ -6,7 +6,7 @@ var client = mc.createClient({
   port: data.server.port,
   username: data.account.email,
   password: data.account.password,
-//  hideErrors: true,
+  hideErrors: true,
 });
 console.log("Connecting to the server...")
 
