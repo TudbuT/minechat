@@ -27,12 +27,13 @@ const sendChat = function (msg) {
 client.on('chat', function(packet) {
   var jsonMsg = JSON.parse(packet.message);
   var msg = jsonMsg.text
-  jsonMsg.extra.forEach(j => {
-    if(j.text)
-      msg = msg + j.text
-    else if(typeof(j) == "string")
-      msg = msg + j
-  })
+  if(jsonMsg.extra)
+    jsonMsg.extra.forEach(j => {
+      if(j.text)
+        msg = msg + j.text
+      else if(typeof(j) == "string")
+        msg = msg + j
+    })
   chat[chat.length] = msg;
   newChat(msg);
 });
