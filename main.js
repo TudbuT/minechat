@@ -24,7 +24,7 @@ client.on('chat', function(packet) {
   if(jsonMsg.translate == 'chat.type.announcement' || jsonMsg.translate == 'chat.type.text') {
     var username = jsonMsg.with[0].text;
     var msg = jsonMsg.with[1];
-    module.exports.chat[module.exports.chat.length] = "<" + username + "> " + msg
+    module.exports.chat[module.exports.chat.length] = "\n<" + username + "> " + msg
     server.newChat("<" + username + "> " + msg);
   }
 });
