@@ -30,7 +30,7 @@ client.on('chat', function(packet) {
   jsonMsg.extra.forEach(j => {
     if(j.text)
       msg = msg + j.text
-    else if(typeof(j) == "STRING")
+    else if(typeof(j) == "string")
       msg = msg + j
   })
   chat[chat.length] = msg;
