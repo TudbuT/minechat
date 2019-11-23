@@ -27,7 +27,7 @@ const sendChat = function (msg) {
 client.on('chat', function(packet) {
   var jsonMsg = JSON.parse(packet.message);
     
-  var msg = jsonMsg.text && jsonMsg.extra.join("");
+  var msg = jsonMsg.text + jsonMsg.extra.join("");
   chat[chat.length] = msg;
   newChat(msg);
 });
