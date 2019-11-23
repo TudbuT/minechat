@@ -5,3 +5,7 @@ module.exports = {
     console.log(msg)
   }
 }
+
+process.stdin.on("data", d => {
+  client.sendChat(d);
+})
