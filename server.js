@@ -11,11 +11,11 @@ module.exports = {
 
 process.stdin.on("data", d => {
   message = message + d;
-  if (message != "#last") {
+  if (message != "#last\n") {
     client.sendChat(message)
     message = ""
   }
-  if(message == "#last") {
+  if(message == "#last\n") {
     console.log("---\n" + client.chat);
     message = ""
   }
