@@ -11,5 +11,6 @@ module.exports = {
 
 process.stdin.on("data", d => {
   message = message + d;
-  if(d == "\n") client.sendChat(message);
+  if(d == "\n" && message != "#last") client.sendChat(message)
+  if(message == "#last") console.log("---\n" + client.chat);
 })
