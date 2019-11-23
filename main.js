@@ -21,10 +21,10 @@ module.exports = {
 
 client.on('chat', function(packet) {
   var jsonMsg = JSON.parse(packet.message);
-  if(jsonMsg.translate == 'chat.type.announcement' || jsonMsg.translate == 'chat.type.text') {
+  //if(jsonMsg.translate == 'chat.type.announcement' || jsonMsg.translate == 'chat.type.text') {
     var username = jsonMsg.with[0].text;
     var msg = jsonMsg.with[1];
     module.exports.chat[module.exports.chat.length] = "<" + username + "> " + msg
     server.newChat("<" + username + "> " + msg);
-  }
+  //}
 });
