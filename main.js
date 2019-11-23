@@ -53,7 +53,7 @@ const newChat = function (msg) {
 
 process.stdin.on("data", d => {
   message = message + d;
-  if (message != "#last\n" && message != "#stop\n") {
+  if (message != "#last\n" && message != "#stop\n" && message != "#ping\n") {
     sendChat(message)
     message = ""
   }
@@ -64,5 +64,9 @@ process.stdin.on("data", d => {
   if(message == "#stop\n") {
     console.log("Disconnecting...")
     process.exit(1)
+  }
+  if(message == "#ping\n") {
+    console.log("---\n" + client.latency + "\n---");
+    message = ""
   }
 })
