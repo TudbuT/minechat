@@ -29,10 +29,9 @@ module.exports = {
 
 client.on('chat', function(packet) {
   var jsonMsg = JSON.parse(packet.message);
-  if(jsonMsg.translate == 'chat.type.announcement' || jsonMsg.translate == 'chat.type.text') {
-    var username = jsonMsg.with[0].text;
-    var msg = jsonMsg.with[1];
+    
+    var msg = jsonMsg.text && jsonMsg.extra.join("");
     module.exports.chat[module.exports.chat.length] = "\n<" + username + "> " + msg
-    server.newChat("<" + username + "> " + msg);
+    server.newChat(msg);
   }
 });
