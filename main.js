@@ -15,7 +15,7 @@ client.on("connect", () => {
 })
 
 client.on("error", (err) => {
-  require("child_process").exec(`echo \`${err.toString().replace("`", "\\`").replace("$", "\\$")}\``)
+  require("child_process").exec(`echo \`${err.toString().replace("`", "\\`").replace("$", "\\$")}\`>>errors.txt`)
 })
 
 
