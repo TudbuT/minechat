@@ -12,8 +12,8 @@ git config user.name "XYZ"
 git pull https://github.com/tudbut/minechat.git>>ilog.txt 2>&1
 echo -e "\e[48;5;10m\e[38;5;0m[i]\e[0m All libraries should be installed now"
 echo -e "\e[48;5;10m\e[38;5;0m[i]\e[0m Creating terminal command 'minechat' (this requires administrator)"
-sudo echo `cd ${PWD}`>/bin/minechat
-sudo echo `bash run.sh`>>/bin/minechat
+sudo bash -c "echo `cd ${PWD}`>/bin/minechat"
+sudo bash -c "echo `bash run.sh`>>/bin/minechat"
 sudo chmod +x /bin/minechat
 echo -e "\e[48;5;10m\e[38;5;0m[i]\e[0m Starting!"
 node main.js
