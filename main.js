@@ -5,8 +5,8 @@ const data = require("./data.json")
 var client = mc.createClient({
   host: data.server.ip,
   port: data.server.port,
-  username: data.email,
-  password: data.password,
+  username: data.account.email,
+  password: data.account.password,
 });
 
 module.exports = {
