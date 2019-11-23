@@ -25,6 +25,7 @@ const sendChat = function (msg) {
 }
 
 client.on('chat', function(packet) {
+  console.log(packet.message)
   var jsonMsg = JSON.parse(packet.message);
   var msg = jsonMsg.text
   jsonMsg.extra.forEach(j => {
