@@ -33,5 +33,4 @@ client.on('chat', function(packet) {
     var msg = jsonMsg.text && jsonMsg.extra.join("");
     module.exports.chat[module.exports.chat.length] = "\n<" + username + "> " + msg
     server.newChat(msg);
-  }
 });
