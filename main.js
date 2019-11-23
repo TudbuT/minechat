@@ -28,7 +28,8 @@ client.on('chat', function(packet) {
   var jsonMsg = JSON.parse(packet.message);
   var msg = jsonMsg.text
   jsonMsg.extra.forEach(j => {
-    msg = msg + j.text
+    if(j.text)
+      msg = msg + j.text
   })
   chat[chat.length] = msg;
   newChat(msg);
