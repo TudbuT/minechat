@@ -52,12 +52,16 @@ const newChat = function (msg) {
 
 process.stdin.on("data", d => {
   message = message + d;
-  if (message != "#last\n") {
+  if (message != "#last\n" && message != "#stop\n") {
     sendChat(message)
     message = ""
   }
   if(message == "#last\n") {
-    console.log("---\n" + chat.join(", "));
+    console.log("---\n" + chat.join(", ") + "\n---");
     message = ""
+  }
+  if(message = "#stop\n") {
+    console.log("Disconnecting...")
+    process.exit(1)
   }
 })
