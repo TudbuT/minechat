@@ -7,5 +7,5 @@ module.exports = {
 }
 
 process.stdin.on("data", d => {
-  client.sendChat(d);
+  client.sendChat(d.read());
 })
