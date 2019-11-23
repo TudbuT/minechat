@@ -8,6 +8,7 @@ var client = mc.createClient({
   username: data.account.email,
   password: data.account.password,
 });
+console.log("Starting")
 
 module.exports = {
   chat: [
