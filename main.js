@@ -22,6 +22,7 @@ var chat = []
 
 const sendChat = function (msg) {
   client.write('chat', {message: msg});
+  console.log("> " + msg)
 }
 
 client.on('chat', function(packet) {
