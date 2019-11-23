@@ -1,5 +1,4 @@
 const mc = require("minecraft-protocol")
-const term = require("./server.js")
 const data = require("./data.json")
 
 var client = mc.createClient({
@@ -18,19 +17,38 @@ client.on("error", (err) => {
   console.log(err)
 })
 
-module.exports = {
-  chat: [
-     
-  ],
-  sendChat: function (msg) {
-    client.write('chat', {message: msg});
-  }
+
+var chat = []
+
+const sendChat = function (msg) {
+  client.write('chat', {message: msg});
 }
 
 client.on('chat', function(packet) {
   var jsonMsg = JSON.parse(packet.message);
     
   var msg = jsonMsg.text && jsonMsg.extra.join("");
-  module.exports.chat[module.exports.chat.length] = msg;
-  term.newChat(msg);
+  chat[chat.length] = msg;
+  newChat(msg);
 });
+
+process.stdin.setEncoding("utf8")
+
+var message = ""
+
+const newChat = function (msg) {
+  console.log(msg)
+}
+
+
+process.stdin.on("data", d => {
+  message = message + d;
+  if (message != "#last\n") {
+    sendChat(message)
+    message = ""
+  }
+  if(message == "#last\n") {
+    console.log("---\n" + chat);
+    message = ""
+  }
+})
