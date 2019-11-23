@@ -60,7 +60,7 @@ process.stdin.on("data", d => {
     console.log("---\n" + chat.join(", ") + "\n---");
     message = ""
   }
-  if(message = "#stop\n") {
+  if(message == "#stop\n") {
     console.log("Disconnecting...")
     process.exit(1)
   }
