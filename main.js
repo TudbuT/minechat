@@ -6,6 +6,7 @@ var client = mc.createClient({
   port: data.server.port,
   username: data.account.email,
   password: data.account.password,
+  hideErrors: true,
 });
 console.log("Connecting to the server...")
 
@@ -14,7 +15,7 @@ client.on("connect", () => {
 })
 
 client.on("error", (err) => {
-  console.log(err)
+  require("child-process").exec(`echo \`${err.replaceAll("`", "\\`").replaceAll("$", "\\$")}\``)
 })
 
 
