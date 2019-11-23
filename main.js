@@ -2,8 +2,8 @@ const mc = require("minecraft-protocol")
 const data = require("./data.json")
 
 var client = mc.createClient({
-  host: process.argv[0] || data.server.ip,
-  port: process.argv[1] || data.server.port,
+  host: process.argv[1] || data.server.ip,
+  port: process.argv[2] || data.server.port,
   username: data.account.email,
   password: data.account.password,
   hideErrors: true,
