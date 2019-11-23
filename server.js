@@ -1,4 +1,7 @@
 const client = require("./main.js")
+process.stdin.setEncoding("utf8")
+
+var message = ""
 
 module.exports = {
   newChat: function (msg) {
@@ -7,5 +10,6 @@ module.exports = {
 }
 
 process.stdin.on("data", d => {
-  client.sendChat(d.read());
+  msg = msg + d;
+  if(d == "\n") client.sendChat(msg);
 })
