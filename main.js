@@ -1,9 +1,11 @@
 const mc = require("minecraft-protocol")
 const data = require("./data.json")
+process.stdin.setEncoding("utf8")
+
 
 var client = mc.createClient({
-  host: process.argv[1] || data.server.ip,
-  port: process.argv[2] || data.server.port,
+  host: data.server.ip,
+  port: data.server.port,
   username: data.account.email,
   password: data.account.password,
   hideErrors: true,
@@ -42,7 +44,6 @@ client.on('chat', function(packet) {
   newChat(msg);
 });
 
-process.stdin.setEncoding("utf8")
 
 var message = ""
 
