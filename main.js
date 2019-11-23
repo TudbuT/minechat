@@ -30,7 +30,7 @@ module.exports = {
 client.on('chat', function(packet) {
   var jsonMsg = JSON.parse(packet.message);
     
-    var msg = jsonMsg.text && jsonMsg.extra.join("");
-    module.exports.chat[module.exports.chat.length] = msg
-    server.newChat(msg);
+  var msg = jsonMsg.text && jsonMsg.extra.join("");
+  module.exports.chat[module.exports.chat.length] = msg;
+  server.newChat(msg);
 });
