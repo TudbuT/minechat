@@ -33,6 +33,6 @@ client.on('chat', function(packet) {
     var username = jsonMsg.with[0].text;
     var msg = jsonMsg.with[1];
     module.exports.chat[module.exports.chat.length] = "\n<" + username + "> " + msg
-    console.log("<" + username + "> " + msg);
+    server.newChat("<" + username + "> " + msg);
   }
 });
