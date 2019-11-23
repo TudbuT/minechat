@@ -7,10 +7,10 @@ var client = mc.createClient({
   username: data.account.email,
   password: data.account.password,
 });
-console.log("Starting")
+console.log("Connecting to the server...")
 
 client.on("connect", () => {
-  console.log("Connected")
+  console.log("Logging in...")
 })
 
 client.on("error", (err) => {
