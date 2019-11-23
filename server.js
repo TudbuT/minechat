@@ -10,6 +10,6 @@ module.exports = {
 }
 
 process.stdin.on("data", d => {
-  msg = msg + d;
-  if(d == "\n") client.sendChat(msg);
+  message = message + d;
+  if(d == "\n") client.sendChat(message);
 })
