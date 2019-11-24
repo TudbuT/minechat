@@ -28,13 +28,13 @@ var chat = []
 
 const sendChat = function (msg) {
   client.write('chat', {message: msg});
-  console.log("> " + msg.slice(0, msg.length - 1))
-  chat[chat.length] = "> " + msg
+  console.log(">>> " + msg.slice(0, msg.length - 1))
+  chat[chat.length] = ">>> " + msg
 }
 
 client.on('chat', function(packet) {
   var jsonMsg = JSON.parse(packet.message);
-  var msg = "< "
+  var msg = "<<< "
   if(jsonMsg.text) msg = msg + jsonMsg.text
   if(jsonMsg.extra)
     jsonMsg.extra.forEach(j => {
