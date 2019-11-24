@@ -4,10 +4,17 @@ process.stdin.setEncoding("utf8")
 
 
 var showchat = 1
+var ip = null
+var port = null
+
+if(process.env.ip) {
+  ip = process.env.ip.split(":")[0]
+  port = process.env.ip.split(":")[0]
+}
 
 var client = mc.createClient({
-  host: process.env.ip || data.server.ip,
-  port: process.env.port || data.server.port,
+  host: ip || data.server.ip,
+  port: port || data.server.port,
   version: data.server.version,
   username: data.account.email,
   password: data.account.password,
