@@ -8,6 +8,7 @@ var showchat = 1
 var client = mc.createClient({
   host: data.server.ip,
   port: data.server.port,
+  version: data.server.version,
   username: data.account.email,
   password: data.account.password,
   hideErrors: true,
