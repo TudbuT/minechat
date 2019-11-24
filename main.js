@@ -9,11 +9,11 @@ var port = null
 
 if(process.env.ip) {
   ip = process.env.ip.split(":")[0]
-  port = process.env.ip.split(":")[1]
+  port = process.env.ip.split(":")[1] || "25565"
 }
 if(process.argv[2]) {
   ip = process.argv[2].split(":")[0]
-  port = process.argv[2].split(":")[1]
+  port = process.argv[2].split(":")[1] || "25565"
 }
 
 var client = mc.createClient({
