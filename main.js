@@ -54,7 +54,7 @@ const newChat = function (msg) {
 
 process.stdin.on("data", d => {
   message = message + d;
-  if (message != "#last\n" && message != "#stop\n" && message != "#ping\n") {
+  if (message != "#last\n" && message != "#stop\n" && message != "#ping\n" && message != "#pl\n") {
     sendChat(message)
     message = ""
   }
@@ -69,7 +69,21 @@ process.stdin.on("data", d => {
     process.exit(1)
   }
   if(message == "#ping\n") {
-    console.log("---\n" + client.latency + "\n---");
+    mc.ping({
+      host: data.server.ip,
+      port: data.server.port
+    }, (err, results) => {
+      console.log("---\n" + "v1: " + client.latency + "\nv2: " + results.latency + "\n---");
+    })
+    message = ""
+  }
+  if(message == "#pl\n") {
+    mc.ping({
+      host: data.server.ip,
+      port: data.server.port
+    }, (err, results) => {
+      console.log("---\n" + "MX:" + results.players.max + "\nON: " + results.players.online + "\n---");
+    })
     message = ""
   }
 })
