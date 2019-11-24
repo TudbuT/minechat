@@ -84,7 +84,7 @@ process.stdin.on("data", d => {
       host: data.server.ip,
       port: data.server.port
     }, (err, results) => {
-      console.log("#\n---\n" + "MX:" + results.players.max + "\nON: " + results.players.online + "\n---");
+      console.log("#\n---\n" + "MX: " + results.players.max + "\nON: " + results.players.online + "\n---");
     })
     message = ""
   }
