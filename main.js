@@ -3,6 +3,8 @@ const data = require("./data.json")
 process.stdin.setEncoding("utf8")
 
 
+var showchat = 1
+
 var client = mc.createClient({
   host: data.server.ip,
   port: data.server.port,
@@ -48,24 +50,24 @@ client.on('chat', function(packet) {
 var message = ""
 
 const newChat = function (msg) {
-  console.log(msg)
+  if(showchat) console.log(msg)
 }
 
 
 process.stdin.on("data", d => {
   message = message + d;
-  if (message != "#last\n" && message != "#stop\n" && message != "#ping\n" && message != "#pl\n") {
+  if (message != "#last\n" && message != "#stop\n" && message != "#ping\n" && message != "#pl\n" && message != "#m\n" && message != "#um\n") {
     sendChat(message)
     message = ""
   }
   if(message == "#last\n") {
-    console.log("---\n" + chat.join(", ") + "\n---");
+    console.log("#\n---\n" + chat.join(", ") + "\n---");
     message = ""
   }
   if(message == "#stop\n") {
-    console.log("Disconnecting...")
+    console.log("# Disconnecting...")
     client.end("Disconnected")
-    console.log("Disconnected")
+    console.log("# Disconnected")
     process.exit(1)
   }
   if(message == "#ping\n") {
@@ -73,7 +75,7 @@ process.stdin.on("data", d => {
       host: data.server.ip,
       port: data.server.port
     }, (err, results) => {
-      console.log("---\n" + "LOC: " + client.latency + "\nSRV: " + results.latency + "\n---");
+      console.log("#\n---\n" + "LOC: " + client.latency + "\nSRV: " + results.latency + "\n---");
     })
     message = ""
   }
@@ -82,8 +84,18 @@ process.stdin.on("data", d => {
       host: data.server.ip,
       port: data.server.port
     }, (err, results) => {
-      console.log("---\n" + "MX:" + results.players.max + "\nON: " + results.players.online + "\n---");
+      console.log("#\n---\n" + "MX:" + results.players.max + "\nON: " + results.players.online + "\n---");
     })
+    message = ""
+  }
+  if(message == "#m\n") {
+    showchat = 0
+    console.log("# Hiding chat")
+    message = ""
+  }
+  if(message == "#um\n") {
+    showchat = 1
+    console.log("# Showing chat")
     message = ""
   }
 })
