@@ -11,6 +11,10 @@ if(process.env.ip) {
   ip = process.env.ip.split(":")[0]
   port = process.env.ip.split(":")[1]
 }
+if(process.argv[2]) {
+  ip = process.argv[2].split(":")[0]
+  port process.argv[2].split(":")[1]
+}
 
 var client = mc.createClient({
   host: ip || data.server.ip,
