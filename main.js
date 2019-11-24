@@ -13,7 +13,7 @@ if(process.env.ip) {
 }
 if(process.argv[2]) {
   ip = process.argv[2].split(":")[0]
-  port process.argv[2].split(":")[1]
+  port = process.argv[2].split(":")[1]
 }
 
 var client = mc.createClient({
