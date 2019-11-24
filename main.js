@@ -65,7 +65,7 @@ process.stdin.on("data", d => {
   if(message == "#stop\n") {
     console.log("Disconnecting...")
     client.end("Disconnected")
-    console.log("Disconnected"
+    console.log("Disconnected")
     process.exit(1)
   }
   if(message == "#ping\n") {
