@@ -73,7 +73,7 @@ process.stdin.on("data", d => {
       host: data.server.ip,
       port: data.server.port
     }, (err, results) => {
-      console.log("---\n" + "v1: " + client.latency + "\nv2: " + results.latency + "\n---");
+      console.log("---\n" + "LOC: " + client.latency + "\nSRV: " + results.latency + "\n---");
     })
     message = ""
   }
