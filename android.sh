@@ -13,5 +13,5 @@ git config user.email "y@x.z"
 git config user.name "XYZ"
 git pull https://github.com/tudbut/minechat.git>>ilog.txt 2>&1
 echo -e "\e[48;5;10m\e[38;5;0m[i]\e[0m All libraries should be installed now"
-echo -e "\e[48;5;10m\e[38;5;0m[i]\e[0m Starting!"
-node main.js
+echo -e "\e[48;5;10m\e[38;5;0m[!]\e[0m You can now configure MineChat! Use `cd minechat` and then `mcedit data.json`"
+echo -e "\e[48;5;10m\e[38;5;0m[!]\e[0m Then you can finally start it using `bash run [<serverip:serverport>]` - If you don't define serverip and serverport, it will take it from data.json."
