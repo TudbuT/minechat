@@ -61,7 +61,7 @@ process.stdin.on("data", d => {
     message = ""
   }
   if(message == "#last\n") {
-    console.log("#\n---\n" + chat.join("\n").split("\n\n").join("\n") + "\n---");
+    console.log("#\n\n\n---\n" + chat.join("\n").split("\n\n").join("\n") + "\n---");
     message = ""
   }
   if(message == "#stop\n") {
