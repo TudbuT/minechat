@@ -84,8 +84,8 @@ process.stdin.on("data", d => {
   }
   if(message == "#ping\n") {
     mc.ping({
-      host: data.server.ip,
-      port: data.server.port
+      host: ip || data.server.ip,
+      port: port || data.server.port
     }, (err, results) => {
       console.log("#\n---\n" + "LOC: " + client.latency + "\nSRV: " + results.latency + "\n---");
     })
@@ -93,8 +93,8 @@ process.stdin.on("data", d => {
   }
   if(message == "#pl\n") {
     mc.ping({
-      host: data.server.ip,
-      port: data.server.port
+      host: ip || data.server.ip,
+      port: port || data.server.port
     }, (err, results) => {
       console.log("#\n---\n" + "MX: " + results.players.max + "\nON: " + results.players.online + "\n---");
     })
