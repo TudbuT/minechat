@@ -33,6 +33,11 @@ client.on("connect", () => {
   free = 1;
 })
 
+setInterval(() => {
+      process.stdout.write("\r\x1b[K")
+      process.stdout.write(">>> " + message)
+    }, 10)
+
 const keys = "abcdefghijklmnopqrstuvwxyz#0123456789ßöüä*~+'-_.:,;<>|@€`'°^!\"$%&/()=?{[]}\\ \u0008\u0127\u0003\u001b";
 
 process.stdin.on("data", (key) => {
@@ -50,15 +55,12 @@ process.stdin.on("data", (key) => {
     process.exit();
   }
   
-  for(let abcd of "abcd".split(""))
-    if(key === "\u001b[1" + abcd) {
-      process.stdout.write("\r\x1b[K")
-      process.stdout.write(">>> " + message)
-    }
+  
+    
   
   if(!free) return;
   
-  if(key === "\u001b[3~" || key === "\u0008") {
+  if(key === "\u0008" || key === "¶") {
     let emessage = message.slice(0, message.length - 2);
     m = emessage.split("");
     process.stdout.write("\r\x1b[K")
