@@ -58,7 +58,7 @@ process.stdin.on("data", (key) => {
   
   if(!free) return;
   
-  if(key === "\u0127" || key === "\u0008") {
+  if(key === "\u001b[3~" || key === "\u0008") {
     let emessage = message.slice(0, message.length - 2);
     m = emessage.split("");
     process.stdout.write("\r\x1b[K")
