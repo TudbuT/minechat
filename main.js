@@ -75,6 +75,7 @@ process.stdin.setRawMode(true);
 process.stdin.on("data", (key) => {
   message += key;
   if ( key === '\u0003' ) {
+    console.log("");
     process.exit();
   }
   if (message != "#last\r" && message != "#stop\r" && message != "#ping\r" && message != "#pl\r" && message != "#m\r" && message != "#um\r") {
