@@ -50,7 +50,7 @@ process.stdin.on("data", (key) => {
   
   if(!free) return;
   
-  if(key === "\x08 \x08") {
+  if(key === "\b \b") {
     message = "";
     for (let chr in m) {
       if(chr !== m.length - 3)
