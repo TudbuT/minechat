@@ -77,21 +77,21 @@ process.stdin.on("data", (key) => {
   if ( key === '\u0003' ) {
     process.exit();
   }
-  if (message != "#last\n" && message != "#stop\n" && message != "#ping\n" && message != "#pl\n" && message != "#m\n" && message != "#um\n") {
+  if (message != "#last\r" && message != "#stop\r" && message != "#ping\r" && message != "#pl\r" && message != "#m\r" && message != "#um\r") {
     sendChat(message)
     message = ""
   }
-  if(message == "#last\n") {
+  if(message == "#last\r") {
     console.log("#\n\n\n---\n" + chat.join("\n").split("\n\n").join("\n") + "\n---");
     message = ""
   }
-  if(message == "#stop\n") {
+  if(message == "#stop\r") {
     console.log("# Disconnecting...")
     client.end("Disconnected")
     console.log("# Disconnected")
     process.exit(1)
   }
-  if(message == "#ping\n") {
+  if(message == "#ping\r") {
     mc.ping({
       host: ip || data.server.ip,
       port: port || data.server.port
@@ -100,7 +100,7 @@ process.stdin.on("data", (key) => {
     })
     message = ""
   }
-  if(message == "#pl\n") {
+  if(message == "#pl\r") {
     mc.ping({
       host: ip || data.server.ip,
       port: port || data.server.port
@@ -109,17 +109,17 @@ process.stdin.on("data", (key) => {
     })
     message = ""
   }
-  if(message == "#m\n") {
+  if(message == "#m\r") {
     showchat = 0
     console.log("# Hiding chat")
     message = ""
   }
-  if(message == "#um\n") {
+  if(message == "#um\r") {
     showchat = 1
     console.log("# Showing chat")
     message = ""
   }
   process.stdout.write(key);
   if(key === "\r")
-    process.stdout.write("" + message + "\n>>> ")
+    process.stdout.write("\n>>> ")
 })
