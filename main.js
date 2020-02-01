@@ -93,7 +93,7 @@ process.stdin.on("data", (key) => {
     console.log("#stop");
     process.exit();
   }
-  if (message != "#last\r" && message != "#stop\r" && message != "#ping\r" && message != "#pl\r" && message != "#m\r" && message != "#um\r") {
+  if (message != "#last\r" && message != "#stop" && message != "#ping\r" && message != "#pl\r" && message != "#m\r" && message != "#um\r") {
     sendChat(message)
     message = ""
   }
@@ -123,17 +123,14 @@ process.stdin.on("data", (key) => {
     }, (err, results) => {
       console.log("#\n---\n" + "MX: " + results.players.max + "\nON: " + results.players.online + "\n---");
     })
-    message = ""
   }
   if(message == "#m\r") {
     showchat = 0
     console.log("# Hiding chat")
-    message = ""
   }
   if(message == "#um\r") {
     showchat = 1
     console.log("# Showing chat")
-    message = ""
   }
   process.stdout.write(key);
   if(key === "\r") {
