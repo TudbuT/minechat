@@ -51,6 +51,15 @@ process.stdin.on("data", (key) => {
   if(!free) return;
   
   process.stdout.write(key);
+  if(key === "\x08") {
+    var message = "";
+    for (let chr of m) {
+      message += "" + chr;
+    }
+    message = message.slice(0, message.length - 2);
+    console.log("\r\x1b[K")
+    process.stdout.write(">>> " + message)
+  }
   if(key === "\r") {
   if (message != "#last" && message != "#stop" && message != "#ping" && message != "#pl" && message != "#m" && message != "#um") {
     sendChat(message)
