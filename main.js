@@ -50,7 +50,6 @@ process.stdin.on("data", (key) => {
   
   if(!free) return;
   
-  process.stdout.write(key);
   if(key === "<") {
     message = "";
     for (let chr in m) {
@@ -60,7 +59,12 @@ process.stdin.on("data", (key) => {
     m = message.split("");
     process.stdout.write("\r\x1b[K")
     process.stdout.write(">>> " + message)
+    return;
   }
+  
+  
+  process.stdout.write(key);
+  
   if(key === "\r") {
   if (message != "#last" && message != "#stop" && message != "#ping" && message != "#pl" && message != "#m" && message != "#um") {
     sendChat(message)
