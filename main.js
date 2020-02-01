@@ -34,13 +34,15 @@ client.on("connect", () => {
 })
 
 setInterval(() => {
-var message = "";
-  for (let chr of m) {
-    message += "" + chr;
+  if(free) {
+    var message = "";
+    for (let chr of m) {
+      message += "" + chr;
+    }
+    process.stdout.write("\r\x1b[K")
+    process.stdout.write(">>> " + message)
   }
-      process.stdout.write("\r\x1b[K")
-      process.stdout.write(">>> " + message)
-    }, 10)
+}, 10)
 
 const keys = "abcdefghijklmnopqrstuvwxyz#0123456789ßöüä*~+'-_.:,;<>|@€`'°^!\"$%&/()=?{[]}\\ \u0008\u0127\u0003\u001b";
 
