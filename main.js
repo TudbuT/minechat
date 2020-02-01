@@ -34,6 +34,10 @@ client.on("connect", () => {
 })
 
 setInterval(() => {
+var message = "";
+  for (let chr of m) {
+    message += "" + chr;
+  }
       process.stdout.write("\r\x1b[K")
       process.stdout.write(">>> " + message)
     }, 10)
