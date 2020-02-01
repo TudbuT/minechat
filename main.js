@@ -89,7 +89,7 @@ process.stdin.on("data", (key) => {
   }
 
   if(key === "\x1b[B") {
-    if(!lastmessage++) 
+    if(!lastmessages[lastmessage++]) 
       lastmessage--;
     process.stdout.write("\r\x1b[K")
     process.stdout.write(">>> " + lastmessages[lastmessage]);
