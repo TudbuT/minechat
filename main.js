@@ -27,7 +27,8 @@ var client = mc.createClient({
 console.log("Connecting to the server...")
 
 client.on("connect", () => {
-  console.log("Logging in...")
+  console.log("Logging in...");
+  process.stdout.write(">>> ");
 })
 
 client.on("error", (err) => {
