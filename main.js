@@ -84,7 +84,7 @@ process.stdin.on("data", (key) => {
     console.log("# Showing chat")
   }
     
-    process.stdout.write("\n>>> ")
+    process.stdout.write("\n\n>>> ")
     m = [];
   }
 })
