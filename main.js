@@ -81,7 +81,8 @@ const newChat = function (msg) {
 process.stdin.setRawMode(true);
 
 process.stdin.on("data", (key) => {
-  m[m.length] = key;
+  if(key !== "\r") 
+    m[m.length] = key;
   
   var message = "";
   for (let chr of m) {
