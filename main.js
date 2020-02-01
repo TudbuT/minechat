@@ -101,7 +101,7 @@ process.stdin.on("data", (key) => {
     console.log("#\n\n\n---\n" + chat.join("\n").split("\n\n").join("\n") + "\n---");
     message = ""
   }
-  if(message == "#stop\r") {
+  if(message == "#stop") {
     console.log("# Disconnecting...")
     client.end("Disconnected")
     console.log("# Disconnected")
