@@ -21,66 +21,14 @@ var client = mc.createClient({
   port: port || data.server.port,
   version: data.server.version,
   username: data.account.email,
-  password: data.account.password,
-  hideErrors: true,
+  password: data.account.password
 });
 console.log("Connecting to the server...")
 
 client.on("connect", () => {
   console.log("\nLogging in...");
   process.stdout.write("\n\n>>> ");
-})
-
-client.on("error", (err) => {
-  var message = "";
-  for (let chr of m) {
-    message += "" + chr;
-  }
-  //require("child_process").exec(`echo \`${err.toString().replace("`", "\\`").replace("$", "\\$")}\`>>errors.txt`)
-  process.stdout.write("\n>>> " + message)
-})
-
-
-var chat = []
-
-const sendChat = function (msg) {
-  client.write('chat', {message: msg});
-  //console.log(">>> " + msg.slice(0, msg.length - 1))
-  chat[chat.length] = ">>> " + msg
-}
-
-client.on('chat', function(packet) {
-  var jsonMsg = JSON.parse(packet.message);
-  var msg = "<<< "
-  if(jsonMsg.text) msg = msg + jsonMsg.text
-  if(jsonMsg.extra)
-    jsonMsg.extra.forEach(j => {
-      if(j.text)
-        msg = msg + j.text
-      else if(typeof(j) === "string")
-        msg = msg + j
-    })
-  chat[chat.length] = msg;
-  newChat(msg);
-});
-
-
-let m = [""]
-
-const newChat = function (msg) {
-  var message = "";
-  for (let chr of m) {
-    message += "" + chr;
-  }
-  if(showchat) {
-    console.log("\n" + msg)
-    process.stdout.write("\n>>> " + message)
-  }
-}
-
-process.stdin.setRawMode(true);
-
-process.stdin.on("data", (key) => {
+  process.stdin.on("data", (key) => {
   if(key !== "\r") 
     m[m.length] = key;
   
@@ -138,3 +86,54 @@ process.stdin.on("data", (key) => {
     m = [];
   }
 })
+
+})
+
+client.on("error", (err) => {
+  var message = "";
+  for (let chr of m) {
+    message += "" + chr;
+  }
+  //require("child_process").exec(`echo \`${err.toString().replace("`", "\\`").replace("$", "\\$")}\`>>errors.txt`)
+  process.stdout.write("\n>>> " + message)
+})
+
+
+var chat = []
+
+const sendChat = function (msg) {
+  client.write('chat', {message: msg});
+  //console.log(">>> " + msg.slice(0, msg.length - 1))
+  chat[chat.length] = ">>> " + msg
+}
+
+client.on('chat', function(packet) {
+  var jsonMsg = JSON.parse(packet.message);
+  var msg = "<<< "
+  if(jsonMsg.text) msg = msg + jsonMsg.text
+  if(jsonMsg.extra)
+    jsonMsg.extra.forEach(j => {
+      if(j.text)
+        msg = msg + j.text
+      else if(typeof(j) === "string")
+        msg = msg + j
+    })
+  chat[chat.length] = msg;
+  newChat(msg);
+});
+
+
+let m = [""]
+
+const newChat = function (msg) {
+  var message = "";
+  for (let chr of m) {
+    message += "" + chr;
+  }
+  if(showchat) {
+    console.log("\n" + msg)
+    process.stdout.write("\n>>> " + message)
+  }
+}
+
+process.stdin.setRawMode(true);
