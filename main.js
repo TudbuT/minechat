@@ -93,21 +93,24 @@ process.stdin.on("data", (key) => {
     console.log("#stop");
     process.exit();
   }
-  if (message != "#last\r" && message != "#stop" && message != "#ping\r" && message != "#pl\r" && message != "#m\r" && message != "#um\r") {
+  
+  process.stdout.write(key);
+  if(key === "\r") {
+    if (message != "#last" && message != "#stop" && message != "#ping" && message != "#pl" && message != "#m" && message != "#um") {
     sendChat(message)
     message = ""
   }
-  if(message == "#last\r") {
+  if(message == "#last") {
     console.log("#\n\n\n---\n" + chat.join("\n").split("\n\n").join("\n") + "\n---");
     message = ""
   }
-  if(message == "#stop\n") {
+  if(message == "#stop") {
     console.log("# Disconnecting...")
     client.end("Disconnected")
     console.log("# Disconnected")
     process.exit(1)
   }
-  if(message == "#ping\r") {
+  if(message == "#ping") {
     mc.ping({
       host: ip || data.server.ip,
       port: port || data.server.port
@@ -116,7 +119,7 @@ process.stdin.on("data", (key) => {
     })
     message = ""
   }
-  if(message == "#pl\r") {
+  if(message == "#pl") {
     mc.ping({
       host: ip || data.server.ip,
       port: port || data.server.port
@@ -124,16 +127,15 @@ process.stdin.on("data", (key) => {
       console.log("#\n---\n" + "MX: " + results.players.max + "\nON: " + results.players.online + "\n---");
     })
   }
-  if(message == "#m\r") {
+  if(message == "#m") {
     showchat = 0
     console.log("# Hiding chat")
   }
-  if(message == "#um\r") {
+  if(message == "#um") {
     showchat = 1
     console.log("# Showing chat")
   }
-  process.stdout.write(key);
-  if(key === "\r") {
+    
     process.stdout.write("\n>>> ")
   }
 })
