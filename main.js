@@ -39,7 +39,7 @@ var chat = []
 
 const sendChat = function (msg) {
   client.write('chat', {message: msg});
-  console.log(">>> " + msg.slice(0, msg.length - 1))
+  //console.log(">>> " + msg.slice(0, msg.length - 1))
   chat[chat.length] = ">>> " + msg
 }
 
@@ -51,7 +51,7 @@ client.on('chat', function(packet) {
     jsonMsg.extra.forEach(j => {
       if(j.text)
         msg = msg + j.text
-      else if(typeof(j) == "string")
+      else if(typeof(j) === "string")
         msg = msg + j
     })
   chat[chat.length] = msg;
@@ -59,15 +59,15 @@ client.on('chat', function(packet) {
 });
 
 
-var message = ""
+let message = ""
 
 const newChat = function (msg) {
-  if(showchat) console.log(msg)
+  if(showchat) console.log("\n" + msg)
 }
 
 
 process.stdin.on("data", d => {
-  message = message + d;
+  message = d;
   if (message != "#last\n" && message != "#stop\n" && message != "#ping\n" && message != "#pl\n" && message != "#m\n" && message != "#um\n") {
     sendChat(message)
     message = ""
@@ -110,4 +110,5 @@ process.stdin.on("data", d => {
     console.log("# Showing chat")
     message = ""
   }
+  process.stdout.write(">>> ")
 })
