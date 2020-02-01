@@ -33,6 +33,7 @@ client.on("connect", () => {
 
 client.on("error", (err) => {
   //require("child_process").exec(`echo \`${err.toString().replace("`", "\\`").replace("$", "\\$")}\`>>errors.txt`)
+  process.stdout.write("\n>>> " + message)
 })
 
 
@@ -65,7 +66,7 @@ let message = ""
 const newChat = function (msg) {
   if(showchat) {
     console.log("\n" + msg)
-    process.stdout.write(">>> " + message)
+    process.stdout.write("\n>>> " + message)
   }
 }
 
@@ -99,7 +100,7 @@ process.stdin.on("data", (key) => {
     })
     message = ""
   }
-  if(message == "#pl\u000a") {
+  if(message == "#pl\n") {
     mc.ping({
       host: ip || data.server.ip,
       port: port || data.server.port
@@ -108,17 +109,17 @@ process.stdin.on("data", (key) => {
     })
     message = ""
   }
-  if(message == "#m\u000a") {
+  if(message == "#m\n") {
     showchat = 0
     console.log("# Hiding chat")
     message = ""
   }
-  if(message == "#um\u000a") {
+  if(message == "#um\n") {
     showchat = 1
     console.log("# Showing chat")
     message = ""
   }
   process.stdout.write(key);
-  if(message.endsWith("\u000a"))
+  if(message.endsWith("\n"))
     process.stdout.write(">>> ")
 })
