@@ -33,9 +33,11 @@ client.on("connect", () => {
   free = 1;
 })
 
+const keys = "abcdefghijklmnopqrstuvwxyz#0123456789ßöüä*~+'-_.:,;<>|@€`'°^!\"$%&/()=?{[]}\\"
+
 process.stdin.on("data", (key) => {
   
-  if(key !== "\r") 
+  if(key !== "\r" && (keys.contains(key) || keys.toUpperCase().contains(key))) 
     m[m.length] = key;
   
   var message = "";
