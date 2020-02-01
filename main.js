@@ -58,7 +58,7 @@ process.stdin.on("data", (key) => {
         message += "" + m[chr];
     }
     m = message.split("");
-    console.log("\r\x1b[K")
+    process.stdout.write("\r\x1b[K")
     process.stdout.write(">>> " + message)
   }
   if(key === "\r") {
