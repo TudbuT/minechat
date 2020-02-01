@@ -74,6 +74,7 @@ process.stdin.setRawMode(true);
 
 process.stdin.on("data", (key) => {
   message += key;
+  console.log(message);
   if ( key === '\u0003' ) {
     console.log("");
     process.exit();
@@ -121,6 +122,7 @@ process.stdin.on("data", (key) => {
     message = ""
   }
   process.stdout.write(key);
-  if(key === "\r")
+  if(key === "\r") {
     process.stdout.write("\n>>> ")
+  }
 })
