@@ -121,5 +121,5 @@ process.stdin.on("data", (key) => {
   }
   process.stdout.write(key);
   if(key === "\r")
-    process.stdout.write("\n" + message + "\n>>> ")
+    process.stdout.write("" + message + "\n>>> ")
 })
