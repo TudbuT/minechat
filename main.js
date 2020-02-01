@@ -50,7 +50,7 @@ process.stdin.on("data", (key) => {
     process.exit();
   }
   
-  for(let abcd of "ABCD".split(""))
+  for(let abcd of "abcd".split(""))
     if(key === "\u001b[1" + abcd) {
       process.stdout.write("\r\x1b[K")
       process.stdout.write(">>> " + message)
