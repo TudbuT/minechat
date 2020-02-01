@@ -52,7 +52,7 @@ process.stdin.on("data", (key) => {
   
   process.stdout.write(key);
   if(key === "\r") {
-    if (message != "#last" && message != "#stop" && message != "#ping" && message != "#pl" && message != "#m" && message != "#um") {
+  if (message != "#last" && message != "#stop" && message != "#ping" && message != "#pl" && message != "#m" && message != "#um") {
     sendChat(message)
   }
   if(message == "#last") {
@@ -138,7 +138,7 @@ const newChat = function (msg) {
     message += "" + chr;
   }
   if(showchat) {
-    console.log("\r\x1b[K\n" + msg)
+    console.log("\r\x1b[K" + msg)
     process.stdout.write(">>> " + message)
   }
 }
