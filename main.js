@@ -73,7 +73,7 @@ const newChat = function (msg) {
 process.stdin.setRawMode(true);
 
 process.stdin.on("data", (key) => {
-  message += key;
+  message = message + key;
   console.log(message);
   if ( key === '\u0003' ) {
     console.log("");
