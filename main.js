@@ -54,7 +54,7 @@ process.stdin.on("data", (key) => {
   if(key === "\x08") {
     message = "";
     for (let chr in m) {
-      if(chr !== m.length - 3)
+      if(chr !== m.length - 2)
         message += "" + m[chr];
     }
     m = message.split("");
