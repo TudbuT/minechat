@@ -57,7 +57,7 @@ process.stdin.on("data", (key) => {
   }
   
   if ( key === '\u0003' ) {
-    console.log("#stop");
+    console.log("\n>>> #stop");
     process.exit();
   }
   
