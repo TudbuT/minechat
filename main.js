@@ -26,6 +26,8 @@ var client = mc.createClient({
 console.log("Connecting to the server...")
 
 let free = 0;
+let lastmessages = [""];
+let lastmessage = 0;
 
 client.on("connect", () => {
   console.log("\nLogging in...");
@@ -64,20 +66,34 @@ process.stdin.on("data", (key) => {
   
     
   
-  if(!free) return;
+  if(!free) {
+    return;
+  }
+  
   
   if(key === "\x7f" || key === "¶" || key === "《" || key === "‹" || key === "\u2408") {
     let emessage = message.slice(0, message.length - 1);
     m = emessage.split("");
     process.stdout.write("\r\x1b[K")
     process.stdout.write(">>> " + emessage)
-    return;
+    return lastmessages[lastmessage] = emessage;
   }
   
+  if(key === "\x1b[A") {
+    if(lastmessage !== 0) 
+      lastmessage--;
+    process.stdout.write("\r\x1b[K")
+    process.stdout.write(">>> " + lastmessages[lastmessage]);
+    m = lastmessages[lastmessage].split("");
+    return;
+  }
   
   process.stdout.write(key);
   
   if(key === "\r") {
+  lastmessage++;
+  lastmessages[lastmessage] = message;
+
   if (message != "#last" && message != "#stop" && message != "#ping" && message != "#pl" && message != "#m" && message != "#um") {
     sendChat(message)
   }
@@ -115,7 +131,6 @@ process.stdin.on("data", (key) => {
     showchat = 1
     console.log("# Showing chat")
   }
-    
     process.stdout.write(">>> ")
     m = [];
   }
