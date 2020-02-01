@@ -53,10 +53,10 @@ process.stdin.on("data", (key) => {
   process.stdout.write(key);
   if(key === "\x08") {
     var message = "";
-    for (let chr of m) {
-      message += "" + chr;
+    for (let chr in m) {
+      if(chr !== m.length - 1)
+        message += "" + m[chr];
     }
-    message = message.slice(0, message.length - 2);
     console.log("\r\x1b[K")
     process.stdout.write(">>> " + message)
   }
