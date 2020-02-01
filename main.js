@@ -27,8 +27,10 @@ console.log("Connecting to the server...")
 
 client.on("connect", () => {
   console.log("\nLogging in...");
-  process.stdout.write("\n\n>>> ");
-  process.stdin.on("data", (key) => {
+  //process.stdout.write("\n\n>>> ");
+})
+
+process.stdin.on("data", (key) => {
   if(key !== "\r") 
     m[m.length] = key;
   
@@ -85,8 +87,6 @@ client.on("connect", () => {
     process.stdout.write("\n>>> ")
     m = [];
   }
-})
-
 })
 
 client.on("error", (err) => {
