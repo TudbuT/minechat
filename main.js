@@ -120,6 +120,6 @@ process.stdin.on("data", (key) => {
     message = ""
   }
   process.stdout.write(key);
-  if(message.endsWith("\u000d"))
-    process.stdout.write("\000d>>> ")
+  if(message.endsWith("\r"))
+    process.stdout.write("\n>>> ")
 })
