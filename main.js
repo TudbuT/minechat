@@ -50,7 +50,7 @@ process.stdin.on("data", (key) => {
   
   if(!free) return;
   
-  if(key === "\b \b") {
+  if(key === "\b") {
     message = "";
     for (let chr in m) {
       if(chr !== m.length - 3)
