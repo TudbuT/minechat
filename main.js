@@ -89,7 +89,6 @@ process.stdin.on("data", (key) => {
     message += "" + chr;
   }
   
-  console.log(message);
   if ( key === '\u0003' ) {
     console.log("#stop");
     process.exit();
@@ -99,11 +98,9 @@ process.stdin.on("data", (key) => {
   if(key === "\r") {
     if (message != "#last" && message != "#stop" && message != "#ping" && message != "#pl" && message != "#m" && message != "#um") {
     sendChat(message)
-    message = ""
   }
   if(message == "#last") {
     console.log("#\n\n\n---\n" + chat.join("\n").split("\n\n").join("\n") + "\n---");
-    message = ""
   }
   if(message == "#stop") {
     console.log("# Disconnecting...")
