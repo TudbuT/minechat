@@ -71,8 +71,11 @@ const newChat = function (msg) {
 
 process.stdin.setRawMode(true);
 
-process.stdin.on("data", (key, d) => {
-  message += d;
+process.stdin.on("data", (key) => {
+  message += key;
+  if ( key === '\u0003' ) {
+    process.exit();
+  }
   if (message != "#last\n" && message != "#stop\n" && message != "#ping\n" && message != "#pl\n" && message != "#m\n" && message != "#um\n") {
     sendChat(message)
     message = ""
@@ -115,7 +118,7 @@ process.stdin.on("data", (key, d) => {
     console.log("# Showing chat")
     message = ""
   }
-  process.stdout.write(d);
+  process.stdout.write(key);
   if(message.endsWith("\n"))
     process.stdout.write(">>> ")
 })
