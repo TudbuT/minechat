@@ -54,7 +54,7 @@ process.stdin.on("data", (key) => {
   if(key === "<") {
     message = "";
     for (let chr in m) {
-      if(chr !== m.length - 2)
+      if(chr !== m.length - 3)
         message += "" + m[chr];
     }
     m = message.split("");
