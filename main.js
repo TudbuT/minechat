@@ -115,5 +115,7 @@ process.stdin.on("data", (key, d) => {
     console.log("# Showing chat")
     message = ""
   }
-  process.stdout.write(">>> ")
+  process.stdout.write(d);
+  if(message.endsWith("\n"))
+    process.stdout.write(">>> ")
 })
