@@ -136,7 +136,7 @@ var chat = []
 
 const sendChat = function (msg) {
   client.write('chat', {message: msg});
-  //console.log(">>> " + msg.slice(0, msg.length - 1))
+  console.log(">>> " + msg)
   chat[chat.length] = ">>> " + msg
 }
 
