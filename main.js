@@ -51,7 +51,7 @@ process.stdin.on("data", (key) => {
   if(!free) return;
   
   process.stdout.write(key);
-  if(key === "\x1b[3~") {
+  if(key === "\u001b[3~") {
     message = "";
     for (let chr in m) {
       if(chr !== m.length - 2)
