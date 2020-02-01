@@ -50,7 +50,7 @@ process.stdin.on("data", (key) => {
   
   if(!free) return;
   
-  if(key === "\b") {
+  if(key === "<") {
     let emessage = "";
     for (let chr in m) {
       if(chr !== m.length - 3)
@@ -58,7 +58,7 @@ process.stdin.on("data", (key) => {
     }
     m = emessage.split("");
     process.stdout.write("\r\x1b[K")
-    process.stdout.write(">>> " + emessage)
+    //process.stdout.write(">>> " + emessage)
     return;
   }
   
