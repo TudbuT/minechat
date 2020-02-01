@@ -25,12 +25,17 @@ var client = mc.createClient({
 });
 console.log("Connecting to the server...")
 
+let free = 0;
+
 client.on("connect", () => {
   console.log("\nLogging in...");
-  //process.stdout.write("\n\n>>> ");
+  process.stdout.write("\n\n>>> ");
+  free = 1;
 })
 
 process.stdin.on("data", (key) => {
+  if(!free) return;
+  
   if(key !== "\r") 
     m[m.length] = key;
   
