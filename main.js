@@ -28,7 +28,7 @@ console.log("Connecting to the server...")
 
 client.on("connect", () => {
   console.log("Logging in...");
-  process.stdout.write("\n>>> ");
+  process.stdout.write("\n\n>>> ");
 })
 
 client.on("error", (err) => {
