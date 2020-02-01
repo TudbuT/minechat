@@ -61,7 +61,7 @@ client.on('chat', function(packet) {
 });
 
 
-let message = []
+let message = [""]
 
 const newChat = function (msg) {
   if(showchat) {
@@ -76,7 +76,7 @@ process.stdin.on("data", (key) => {
   message[message.length] = key;
   console.log(message);
   if ( key === '\u0003' ) {
-    console.log("");
+    console.log("#stop");
     process.exit();
   }
   if (message != "#last\r" && message != "#stop\r" && message != "#ping\r" && message != "#pl\r" && message != "#m\r" && message != "#um\r") {
