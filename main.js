@@ -87,6 +87,15 @@ process.stdin.on("data", (key) => {
     m = lastmessages[lastmessage].split("");
     return;
   }
+
+  if(key === "\x1b[B") {
+    if(!lastmessage++) 
+      lastmessage--;
+    process.stdout.write("\r\x1b[K")
+    process.stdout.write(">>> " + lastmessages[lastmessage]);
+    m = lastmessages[lastmessage].split("");
+    return;
+  }
   
   process.stdout.write(key);
   
