@@ -32,6 +32,10 @@ client.on("connect", () => {
 })
 
 client.on("error", (err) => {
+  var message = "";
+  for (let chr in m) {
+    message += "" + chr;
+  }
   //require("child_process").exec(`echo \`${err.toString().replace("`", "\\`").replace("$", "\\$")}\`>>errors.txt`)
   process.stdout.write("\n>>> " + message)
 })
@@ -64,6 +68,10 @@ client.on('chat', function(packet) {
 let m = [""]
 
 const newChat = function (msg) {
+  var message = "";
+  for (let chr in m) {
+    message += "" + chr;
+  }
   if(showchat) {
     console.log("\n" + msg)
     process.stdout.write("\n>>> " + message)
@@ -76,7 +84,6 @@ process.stdin.on("data", (key) => {
   m[m.length] = key;
   
   var message = "";
-  
   for (let chr in m) {
     message += "" + chr;
   }
