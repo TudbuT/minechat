@@ -50,18 +50,11 @@ process.stdin.on("data", (key) => {
     process.exit();
   }
   
-  if(key === "\u001b[1A") {
-    process.stdout.write("\u001b[1B")
-  }
-  if(key === "\u001b[1B") {
-    process.stdout.write("\u001b[1A")
-  }
-  if(key === "\u001b[1C") {
-    process.stdout.write("\u001b[1D")
-  }
-  if(key === "\u001b[1D") {
-    process.stdout.write("\u001b[1C")
-  }
+  for(let abcd of "ABCD".split(""))
+    if(key === "\u001b[1" + abcd) {
+      process.stdout.write("\r\x1b[K")
+      process.stdout.write(">>> " + message)
+    }
   
   if(!free) return;
   
