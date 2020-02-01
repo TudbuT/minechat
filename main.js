@@ -33,11 +33,11 @@ client.on("connect", () => {
   free = 1;
 })
 
-const keys = "abcdefghijklmnopqrstuvwxyz#0123456789ßöüä*~+'-_.:,;<>|@€`'°^!\"$%&/()=?{[]}\\"
+const keys = "abcdefghijklmnopqrstuvwxyz#0123456789ßöüä*~+'-_.:,;<>|@€`'°^!\"$%&/()=?{[]}\\ \u0008\u0127\u0003";
 
 process.stdin.on("data", (key) => {
   
-  if(key !== "\r" && (keys.contains(key) || keys.toUpperCase().contains(key))) 
+  if(key !== "\r" && (keys.includes(key) || keys.toUpperCase().includes(key))) 
     m[m.length] = key;
   
   var message = "";
@@ -52,7 +52,7 @@ process.stdin.on("data", (key) => {
   
   if(!free) return;
   
-  if(key === "\u0127" || key === "\u0008" || key === "\u0008\u0000") {
+  if(key === "\u0127" || key === "\u0008") {
     let emessage = message.slice(0, message.length - 2);
     m = emessage.split("");
     process.stdout.write("\r\x1b[K")
