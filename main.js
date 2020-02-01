@@ -49,9 +49,9 @@ setInterval(() => {
 const keys = "abcdefghijklmnopqrstuvwxyz#0123456789ßöüä*~+'-_.:,;<>|@€`'°^!\"$%&/()=?{[]}\\ \u0008\u0127\u0003\u001b";
 
 process.stdin.on("data", (key) => {
-  
-  if(key !== "\r" && (keys.includes(key) || keys.toUpperCase().includes(key))) 
-    m[m.length] = key;
+  for (let chr of key.split(""))
+    if(key !== "\r" && (keys.includes(key) || keys.toUpperCase().includes(key))) 
+      m[m.length] = key;
   
   var message = "";
   for (let chr of m) {
