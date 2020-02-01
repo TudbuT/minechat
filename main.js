@@ -33,7 +33,7 @@ client.on("connect", () => {
 
 client.on("error", (err) => {
   var message = "";
-  for (let chr in m) {
+  for (let chr of m) {
     message += "" + chr;
   }
   //require("child_process").exec(`echo \`${err.toString().replace("`", "\\`").replace("$", "\\$")}\`>>errors.txt`)
@@ -69,7 +69,7 @@ let m = [""]
 
 const newChat = function (msg) {
   var message = "";
-  for (let chr in m) {
+  for (let chr of m) {
     message += "" + chr;
   }
   if(showchat) {
@@ -84,7 +84,7 @@ process.stdin.on("data", (key) => {
   m[m.length] = key;
   
   var message = "";
-  for (let chr in m) {
+  for (let chr of m) {
     message += "" + chr;
   }
   
