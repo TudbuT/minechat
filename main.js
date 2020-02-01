@@ -69,7 +69,7 @@ const newChat = function (msg) {
   }
 }
 
-require('tty').setRawMode(true);
+process.stdin.setRawMode(true);
 
 process.stdin.on("data", (key, d) => {
   message += d;
