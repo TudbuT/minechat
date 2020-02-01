@@ -40,7 +40,7 @@ setInterval(() => {
       message += "" + chr;
     }
     process.stdout.write("\r\x1b[K")
-    process.stdout.write("\n>>> " + message)
+    process.stdout.write(">>> " + message)
   }
 }, 10)
 
@@ -70,7 +70,7 @@ process.stdin.on("data", (key) => {
     let emessage = message.slice(0, message.length - 1);
     m = emessage.split("");
     process.stdout.write("\r\x1b[K")
-    process.stdout.write("\n>>> " + emessage)
+    process.stdout.write(">>> " + emessage)
     return;
   }
   
@@ -116,7 +116,7 @@ process.stdin.on("data", (key) => {
     console.log("# Showing chat")
   }
     
-    process.stdout.write("\n>>> ")
+    process.stdout.write(">>> ")
     m = [];
   }
 })
@@ -128,7 +128,7 @@ client.on("error", (err) => {
   }
   console.warn ("\r\x1b[K" + err);
   //require("child_process").exec(`echo \`${err.toString().replace("`", "\\`").replace("$", "\\$")}\`>>errors.txt`)
-  process.stdout.write("\n>>> " + message)
+  process.stdout.write(">>> " + message)
 })
 
 
