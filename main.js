@@ -75,7 +75,7 @@ process.stdin.setRawMode(true);
 process.stdin.on("data", (key) => {
   m[m.length] = key;
   
-  let message = "";
+  var message = "";
   
   for (let chr in m) {
     message += "" + chr;
