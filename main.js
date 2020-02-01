@@ -120,6 +120,6 @@ process.stdin.on("data", (key) => {
     message = ""
   }
   process.stdout.write(key);
-  if(message.endsWith("\r"))
+  if(message.endsWith("\n"))
     process.stdout.write("\r\u001b[K" + message + "\n>>> ")
 })
