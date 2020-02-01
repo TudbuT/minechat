@@ -50,7 +50,7 @@ process.stdin.on("data", (key) => {
   
   if(!free) return;
   
-  if(key === "\b\x1b[3~") {
+  if(key === "\x13") {
     message = "";
     for (let chr in m) {
       if(chr !== m.length - 3)
