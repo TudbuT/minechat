@@ -52,11 +52,12 @@ process.stdin.on("data", (key) => {
   
   process.stdout.write(key);
   if(key === "\b") {
-    var message = "";
+    message = "";
     for (let chr in m) {
-      if(chr !== m.length - 1)
+      if(chr !== m.length - 2)
         message += "" + m[chr];
     }
+    m = message.split("");
     console.log("\r\x1b[K")
     process.stdout.write(">>> " + message)
   }
