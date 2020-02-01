@@ -100,7 +100,7 @@ client.on("error", (err) => {
   for (let chr of m) {
     message += "" + chr;
   }
-  console.warn ("\n" + err);
+  console.warn ("\r\x1b[K\n" + err);
   //require("child_process").exec(`echo \`${err.toString().replace("`", "\\`").replace("$", "\\$")}\`>>errors.txt`)
   process.stdout.write("\n>>> " + message)
 })
@@ -138,7 +138,7 @@ const newChat = function (msg) {
     message += "" + chr;
   }
   if(showchat) {
-    console.log("\n" + msg)
+    console.log("\r\x1b[K\n" + msg)
     process.stdout.write("\n>>> " + message)
   }
 }
