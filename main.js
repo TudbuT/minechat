@@ -58,7 +58,7 @@ process.stdin.on("data", (key) => {
     }
     m = message.split("");
     process.stdout.write("\r\x1b[K")
-    process.stdout.write(">>> " + message)
+    //process.stdout.write(">>> " + message)
     return;
   }
   
