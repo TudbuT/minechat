@@ -51,7 +51,7 @@ process.stdin.on("data", (key) => {
   if(!free) return;
   
   process.stdout.write(key);
-  if(key === "\b") {
+  if(key === "\b ") {
     message = "";
     for (let chr in m) {
       if(chr !== m.length - 2)
