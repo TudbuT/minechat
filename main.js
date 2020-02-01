@@ -100,7 +100,7 @@ client.on("error", (err) => {
   for (let chr of m) {
     message += "" + chr;
   }
-  console.warn ("\r\x1b[K\n" + err);
+  console.warn ("\r\x1b[K" + err);
   //require("child_process").exec(`echo \`${err.toString().replace("`", "\\`").replace("$", "\\$")}\`>>errors.txt`)
   process.stdout.write(">>> " + message)
 })
