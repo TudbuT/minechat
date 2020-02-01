@@ -90,7 +90,7 @@ process.stdin.on("data", (key) => {
     console.log("# Showing chat")
   }
     
-    process.stdout.write("\n\n>>> ")
+    process.stdout.write("\n>>> ")
     m = [];
   }
 })
@@ -102,7 +102,7 @@ client.on("error", (err) => {
   }
   console.warn ("\r\x1b[K\n" + err);
   //require("child_process").exec(`echo \`${err.toString().replace("`", "\\`").replace("$", "\\$")}\`>>errors.txt`)
-  process.stdout.write("\n>>> " + message)
+  process.stdout.write(">>> " + message)
 })
 
 
@@ -139,7 +139,7 @@ const newChat = function (msg) {
   }
   if(showchat) {
     console.log("\r\x1b[K\n" + msg)
-    process.stdout.write("\n>>> " + message)
+    process.stdout.write(">>> " + message)
   }
 }
 
