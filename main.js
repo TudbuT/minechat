@@ -33,7 +33,7 @@ client.on("connect", () => {
   free = 1;
 })
 
-const keys = "abcdefghijklmnopqrstuvwxyz#0123456789ßöüä*~+'-_.:,;<>|@€`'°^!\"$%&/()=?{[]}\\ \u0008\u0127\u0003";
+const keys = "abcdefghijklmnopqrstuvwxyz#0123456789ßöüä*~+'-_.:,;<>|@€`'°^!\"$%&/()=?{[]}\\ \u0008\u0127\u0003\u001b";
 
 process.stdin.on("data", (key) => {
   
@@ -48,6 +48,19 @@ process.stdin.on("data", (key) => {
   if ( key === '\u0003' ) {
     console.log("#stop");
     process.exit();
+  }
+  
+  if(key === "\u001b[1A") {
+    process.stdout.write("\u001b[1B")
+  }
+  if(key === "\u001b[1B") {
+    process.stdout.write("\u001b[1A")
+  }
+  if(key === "\u001b[1C") {
+    process.stdout.write("\u001b[1D")
+  }
+  if(key === "\u001b[1D") {
+    process.stdout.write("\u001b[1C")
   }
   
   if(!free) return;
