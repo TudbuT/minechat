@@ -99,7 +99,7 @@ process.stdin.on("data", (key) => {
     })
     message = ""
   }
-  if(message == "#pl\n") {
+  if(message == "#pl\u000a") {
     mc.ping({
       host: ip || data.server.ip,
       port: port || data.server.port
@@ -108,17 +108,17 @@ process.stdin.on("data", (key) => {
     })
     message = ""
   }
-  if(message == "#m\n") {
+  if(message == "#m\u000a") {
     showchat = 0
     console.log("# Hiding chat")
     message = ""
   }
-  if(message == "#um\n") {
+  if(message == "#um\u000a") {
     showchat = 1
     console.log("# Showing chat")
     message = ""
   }
   process.stdout.write(key);
-  if(message.endsWith("\n"))
+  if(message.endsWith("\u000a"))
     process.stdout.write(">>> ")
 })
