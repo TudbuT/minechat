@@ -65,7 +65,7 @@ process.stdin.on("data", (key) => {
   if(!free) return;
   
   if(key === "\u0008" || key === "¶") {
-    let emessage = message.slice(0, message.length - 2);
+    let emessage = message.slice(0, message.length - 1);
     m = emessage.split("");
     process.stdout.write("\r\x1b[K")
     process.stdout.write(">>> " + emessage)
