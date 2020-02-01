@@ -34,7 +34,6 @@ client.on("connect", () => {
 })
 
 process.stdin.on("data", (key) => {
-  if(!free) return;
   
   if(key !== "\r") 
     m[m.length] = key;
@@ -48,6 +47,8 @@ process.stdin.on("data", (key) => {
     console.log("#stop");
     process.exit();
   }
+  
+  if(!free) return;
   
   process.stdout.write(key);
   if(key === "\r") {
