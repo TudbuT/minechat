@@ -61,7 +61,7 @@ client.on('chat', function(packet) {
 });
 
 
-let message = [""]
+let m = [""]
 
 const newChat = function (msg) {
   if(showchat) {
@@ -73,7 +73,14 @@ const newChat = function (msg) {
 process.stdin.setRawMode(true);
 
 process.stdin.on("data", (key) => {
-  message[message.length] = key;
+  m[m.length] = key;
+  
+  let message = "";
+  
+  for (let chr in m) {
+    message += "" + chr;
+  }
+  
   console.log(message);
   if ( key === '\u0003' ) {
     console.log("#stop");
@@ -87,13 +94,13 @@ process.stdin.on("data", (key) => {
     console.log("#\n\n\n---\n" + chat.join("\n").split("\n\n").join("\n") + "\n---");
     message = ""
   }
-  if(message.join("") == "#stop\r") {
+  if(message == "#stop\r") {
     console.log("# Disconnecting...")
     client.end("Disconnected")
     console.log("# Disconnected")
     process.exit(1)
   }
-  if(message.join("") == "#ping\r") {
+  if(message == "#ping\r") {
     mc.ping({
       host: ip || data.server.ip,
       port: port || data.server.port
@@ -102,7 +109,7 @@ process.stdin.on("data", (key) => {
     })
     message = ""
   }
-  if(message.join("") == "#pl\r") {
+  if(message == "#pl\r") {
     mc.ping({
       host: ip || data.server.ip,
       port: port || data.server.port
@@ -111,12 +118,12 @@ process.stdin.on("data", (key) => {
     })
     message = ""
   }
-  if(message.join("") == "#m\r") {
+  if(message == "#m\r") {
     showchat = 0
     console.log("# Hiding chat")
     message = ""
   }
-  if(message.join("") == "#um\r") {
+  if(message == "#um\r") {
     showchat = 1
     console.log("# Showing chat")
     message = ""
