@@ -63,12 +63,16 @@ client.on('chat', function(packet) {
 let message = ""
 
 const newChat = function (msg) {
-  if(showchat) console.log("\n" + msg)
+  if(showchat) {
+    console.log("\n" + msg)
+    process.stdout.write(">>> " + message)
+  }
 }
 
+require("tty").setRawMode(true);
 
-process.stdin.on("data", d => {
-  message = d;
+process.stdin.on("data", (key, d) => {
+  message += d;
   if (message != "#last\n" && message != "#stop\n" && message != "#ping\n" && message != "#pl\n" && message != "#m\n" && message != "#um\n") {
     sendChat(message)
     message = ""
