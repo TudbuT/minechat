@@ -44,7 +44,7 @@ setInterval(() => {
     process.stdout.write("\r\x1b[K")
     process.stdout.write(">>> " + message)
   }
-}, 10)
+}, 1)
 
 const keys = "abcdefghijklmnopqrstuvwxyz#0123456789ßöüä*~+'-_.:,;<>|@€`'°^!\"$%&/()=?{[]}\\ \u0008\u0127\u0003\u001b";
 
