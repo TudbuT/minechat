@@ -35,7 +35,7 @@ client.on("connect", () => {
   free = 1;
 })
 
-setInterval(() => {
+/*setInterval(() => {
   if(free) {
     var message = "";
     for (let chr of m) {
@@ -44,7 +44,7 @@ setInterval(() => {
     process.stdout.write("\r\x1b[K")
     process.stdout.write(">>> " + message)
   }
-}, 1)
+}, 1)*/
 
 const keys = "abcdefghijklmnopqrstuvwxyz#0123456789ßöüä*~+'-_.:,;<>|@€`'°^!\"$%&/()=?{[]}\\ \u0008\u0127\u0003\u001b";
 
@@ -96,6 +96,18 @@ process.stdin.on("data", (key) => {
     process.stdout.write("\r\x1b[K")
     process.stdout.write(">>> " + message);
     //m = lastmessages[lastmessage].split("");
+    return;
+  }
+
+  if(key === "\x1b[C") {
+    process.stdout.write("\r\x1b[K")
+    process.stdout.write(">>> " + message);
+    return;
+  }
+
+  if(key === "\x1b[D") {
+    process.stdout.write("\r\x1b[K")
+    process.stdout.write(">>> " + message);
     return;
   }
   
