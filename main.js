@@ -79,24 +79,25 @@ process.stdin.on("data", (key) => {
     return lastmessages[lastmessage] = emessage;
   }
   
-  /*if(key === "\x1b[A") {
-    if(lastmessage !== 0) 
-      lastmessage--;
-    process.stdout.write("\r\x1b[K")
-    process.stdout.write(">>> " + lastmessages[lastmessage]);
-    m = lastmessages[lastmessage].split("");
-    return;
-  }*/
-
-  /*if(key === "\x1b[B") {
-    lastmessage++;
+  if(key === "\x1b[A") {
+    /*lastmessage++;
     if(!lastmessages[lastmessage]) 
-      lastmessage += -1;
+      lastmessage += -1;*/
     process.stdout.write("\r\x1b[K")
-    process.stdout.write(">>> " + lastmessages[lastmessage]);
-    m = lastmessages[lastmessage].split("");
+    process.stdout.write(">>> " + message);
+    //m = lastmessages[lastmessage].split("");
     return;
-  }*/
+  }
+
+  if(key === "\x1b[B") {
+    /*lastmessage++;
+    if(!lastmessages[lastmessage]) 
+      lastmessage += -1;*/
+    process.stdout.write("\r\x1b[K")
+    process.stdout.write(">>> " + message);
+    //m = lastmessages[lastmessage].split("");
+    return;
+  }
   
   process.stdout.write(key);
   
