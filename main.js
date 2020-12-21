@@ -2,7 +2,7 @@ const mc = require("minecraft-protocol")
 const data = require("./data.json")
 process.stdin.setEncoding("utf8")
 
-
+function main() {
 var showchat = 1
 var ip = null
 var port = null
@@ -193,6 +193,14 @@ client.on('chat', function(packet) {
   newChat(msg);
 });
 
+client.on("kick_disconnect", () => {
+  newChat("Disconnected.");
+  setTimeout(() => {
+    newChat("Reconnecting...");
+    main()
+  }, 10000);
+})
+}
 
 let m = [""]
 
@@ -208,3 +216,4 @@ const newChat = function (msg) {
 }
 
 process.stdin.setRawMode(true);
+main();
