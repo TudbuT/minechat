@@ -122,7 +122,7 @@ process.stdin.on("data", (key) => {
   lastmessages[lastmessage] = message;
   m = [];
 
-  if (message != "#last" && message != "#stop" && message != "#ping" && message != "#pl" && message != "#m" && message != "#um") {
+  if (message != "#last" && message != "#respawn" && message != "#stop" && message != "#ping" && message != "#pl" && message != "#m" && message != "#um") {
     sendChat(message)
   }
   if(message == "#last") {
@@ -158,6 +158,9 @@ process.stdin.on("data", (key) => {
   if(message == "#um") {
     showchat = 1
     display("# Showing chat")
+  }
+  if(message == "#respawn") {
+    client.write('client_command', { payload: 0 })
   }
     process.stdout.write("\r\x1b[K>>> ")
   }
@@ -199,6 +202,11 @@ client.on('chat', function(packet) {
   chat[chat.length] = msg;
   newChat(msg);
 });
+
+client.on("health_update", packet => {
+  if(packet.health <= 0)
+    client.write('client_command', { payload: 0 })
+})
 
 client.on("kick_disconnect", () => {
   display("\n\nDisconnected.");
