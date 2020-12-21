@@ -61,8 +61,6 @@ process.stdin.on("data", (key) => {
   for (let chr of m) {
     message += "" + chr;
   }
-
-  m = [];
   
   if ( key === '\u0003' ) {
     console.log("\n>>> #stop");
@@ -122,6 +120,7 @@ process.stdin.on("data", (key) => {
   if(key === "\r") {
   lastmessage++;
   lastmessages[lastmessage] = message;
+  m = [];
 
   if (message != "#last" && message != "#stop" && message != "#ping" && message != "#pl" && message != "#m" && message != "#um") {
     sendChat(message)
