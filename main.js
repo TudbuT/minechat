@@ -61,10 +61,11 @@ process.stdin.on("data", (key) => {
   for (let chr of m) {
     message += "" + chr;
   }
+
   
   if ( key === '\u0003' ) {
     console.log("\n>>> #stop");
-    process.exit();
+    process.exit(0);
   }
   
   
@@ -104,13 +105,13 @@ process.stdin.on("data", (key) => {
   }
 
   if(key === "\x1b[C") {
-    process.stdout.write("\r\x1b[K")
+    process.stdout.write("\r\x1b[K");
     process.stdout.write(">>> " + message);
     return;
   }
 
   if(key === "\x1b[D") {
-    process.stdout.write("\r\x1b[K")
+    process.stdout.write("\r\x1b[K");
     process.stdout.write(">>> " + message);
     return;
   }
@@ -121,6 +122,8 @@ process.stdin.on("data", (key) => {
   lastmessage++;
   lastmessages[lastmessage] = message;
 
+  m = [];
+
   if (message != "#last" && message != "#stop" && message != "#ping" && message != "#pl" && message != "#m" && message != "#um") {
     sendChat(message)
   }
@@ -128,17 +131,17 @@ process.stdin.on("data", (key) => {
     console.log("#\n\n\n---\n" + chat.join("\n").split("\n\n").join("\n") + "\n---");
   }
   if(message == "#stop") {
-    console.log("# Disconnecting...")
+    display("# Disconnecting...")
     client.end("Disconnected")
-    console.log("# Disconnected")
-    process.exit(1)
+    display("# Disconnected")
+    process.exit(0)
   }
   if(message == "#ping") {
     mc.ping({
       host: ip || data.server.ip,
       port: port || data.server.port
     }, (err, results) => {
-      console.log("#\n---\n" + "LOC: " + client.latency + "\nSRV: " + results.latency + "\n---");
+      display("#\n---\n" + "LOC: " + client.latency + "\nSRV: " + results.latency + "\n---");
     })
     message = ""
   }
@@ -147,19 +150,18 @@ process.stdin.on("data", (key) => {
       host: ip || data.server.ip,
       port: port || data.server.port
     }, (err, results) => {
-      console.log("#\n---\n" + "MX: " + results.players.max + "\nON: " + results.players.online + "\n---");
+      display("#\n---\n" + "MX: " + results.players.max + "\nON: " + results.players.online + "\n---");
     })
   }
   if(message == "#m") {
     showchat = 0
-    console.log("# Hiding chat")
+    display("# Hiding chat")
   }
   if(message == "#um") {
     showchat = 1
-    console.log("# Showing chat")
+    display("# Showing chat")
   }
-    process.stdout.write(">>> ")
-    m = [];
+    //process.stdout.write(">>> ")
   }
 })
 
