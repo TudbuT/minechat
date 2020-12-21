@@ -7,6 +7,8 @@ var showchat = 1
 var ip = null
 var port = null
 function main() {
+let isInstance = true;
+
 if(process.env.ip) {
   ip = process.env.ip.split(":")[0]
   port = process.env.ip.split(":")[1] || "25565"
@@ -48,6 +50,9 @@ client.on("connect", () => {
 const keys = "abcdefghijklmnopqrstuvwxyz#0123456789ßöüä*~+'-_.:,;<>|@€`'°^!\"$%&/()=?{[]}\\ \u0008\u0127\u0003\u001b";
 
 process.stdin.on("data", (key) => {
+  if(!isInstance)
+    return;
+
   for (let chr of key.split(""))
     if(key !== "\r" && (keys.includes(key) || keys.toUpperCase().includes(key))) 
       m[m.length] = key;
@@ -195,6 +200,7 @@ client.on('chat', function(packet) {
 client.on("kick_disconnect", () => {
   display("\n\nDisconnected.");
   setTimeout(() => {
+    isInstance = false;
     display("Reconnecting...\n");
     main()
   }, 10000);
