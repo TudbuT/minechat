@@ -159,7 +159,7 @@ process.stdin.on("data", (key) => {
     showchat = 1
     display("# Showing chat")
   }
-    display("");
+    process.stdout.write("\r\x1b[K>>> ")
   }
 })
 
