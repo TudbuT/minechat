@@ -177,6 +177,9 @@ client.on("error", (err) => {
 var chat = []
 
 const sendChat = function (msg) {
+  if(msg === "")
+    return;
+
   client.write('chat', {message: msg});
   console.log(">>> " + msg)
   chat[chat.length] = ">>> " + msg
