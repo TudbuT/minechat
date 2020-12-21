@@ -23,15 +23,14 @@ var client = mc.createClient({
   username: data.account.email,
   password: data.account.password
 });
-console.log("Connecting to the server...")
+display("Connecting to the server...")
 
 let free = 0;
 let lastmessages = [""];
 let lastmessage = 0;
 
 client.on("connect", () => {
-  console.log("\nLogging in...");
-  process.stdout.write("\n\n>>> ");
+  display("Logging in...");
   free = 1;
 })
 
@@ -194,9 +193,9 @@ client.on('chat', function(packet) {
 });
 
 client.on("kick_disconnect", () => {
-  newChat("Disconnected.");
+  display("\n\nDisconnected.");
   setTimeout(() => {
-    newChat("Reconnecting...");
+    display("Reconnecting...\n");
     main()
   }, 10000);
 })
@@ -205,14 +204,18 @@ client.on("kick_disconnect", () => {
 let m = [""]
 
 const newChat = function (msg) {
+  if(showchat) {
+    display(msg);
+  }
+}
+
+const display = function (msg) {
   var message = "";
   for (let chr of m) {
     message += "" + chr;
   }
-  if(showchat) {
-    console.log("\r\x1b[K" + msg)
-    process.stdout.write(">>> " + message)
-  }
+  console.log("\r\x1b[K" + msg)
+  process.stdout.write(">>> " + message)
 }
 
 process.stdin.setRawMode(true);
