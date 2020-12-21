@@ -2,11 +2,11 @@ const mc = require("minecraft-protocol")
 const data = require("./data.json")
 process.stdin.setEncoding("utf8")
 
-function main() {
+
 var showchat = 1
 var ip = null
 var port = null
-
+function main() {
 if(process.env.ip) {
   ip = process.env.ip.split(":")[0]
   port = process.env.ip.split(":")[1] || "25565"
